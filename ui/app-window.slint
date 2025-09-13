@@ -1,6 +1,14 @@
-import { Button, VerticalBox } from "std-widgets.slint";
+import { Button, VerticalBox, HorizontalBox } from "std-widgets.slint";
+import { VideoButton } from "components.slint";
 
-export component AppWindow inherits Window {
+export component App inherits Window {
+    preferred-width: 640px;
+    preferred-height: 512px;
+    min-width: 640px;
+    min-height: 512px;
+    title: "Slint GStreamer Example";
+    background: #BBBBBB66;
+
     in-out property <int> counter: 42;
     callback request-increase-value();
     VerticalBox {
@@ -8,11 +16,8 @@ export component AppWindow inherits Window {
             text: "Counter: \{root.counter}";
         }
 
-        Button {
-            text: "Increase value";
-            clicked => {
-                root.request-increase-value();
-            }
+        VideoButton {
+            text: self.clicked ? "Pause" : "Play";
         }
     }
 }
