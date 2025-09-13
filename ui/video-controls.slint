@@ -34,9 +34,11 @@ component VideoButton inherits Rectangle {
 
 component VideoComboBox inherits Window {
     background: transparent;
+
+    in property <[string]> options: ["first", "second", "third_option"];
     ComboBox {
-        model: ["first", "second", "third_option"];
-        current-value: "first";
+        model: options;
+        current-value: options[0];
     }
 }
 
