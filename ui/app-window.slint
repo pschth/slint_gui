@@ -1,23 +1,18 @@
 import { Button, VerticalBox, HorizontalBox } from "std-widgets.slint";
-import { VideoButton } from "components.slint";
+import { VideoWindow, VideoControls } from "video-controls.slint";
 
 export component App inherits Window {
     preferred-width: 640px;
-    preferred-height: 512px;
+    preferred-height: 480px;
     min-width: 640px;
-    min-height: 512px;
+    min-height: 100px;
     title: "Slint GStreamer Example";
     background: #BBBBBB66;
 
-    in-out property <int> counter: 42;
-    callback request-increase-value();
-    VerticalBox {
-        Text {
-            text: "Counter: \{root.counter}";
-        }
+    VerticalLayout {
+        spacing: 5px;
+        VideoWindow { }
 
-        VideoButton {
-            text: self.clicked ? "Pause" : "Play";
-        }
+        VideoControls { }
     }
 }
